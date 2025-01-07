@@ -1,0 +1,18 @@
+{
+  "name": "forkify",
+  "version": "1.0.0",
+  "description": "recipe app",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "author": "Peter Heyboer",
+  "license": "ISC",
+  "dependencies": {
+    "parcel": "^2.13.3",
+    "sass": "^1.26.10"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.13.3"
+  }
+}
