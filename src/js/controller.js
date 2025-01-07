@@ -1,5 +1,6 @@
 import icons from 'url:../img/icons.svg'; // Parcel 2
-console.log(icons);
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 
 const recipeContainer = document.querySelector('.recipe');
 
@@ -32,6 +33,8 @@ const renderSpinner = function (parentEl) {
 const showRecipe = async function () {
   try {
     // 1) Loading recipe
+    renderSpinner(recipeContainer);
+
     const res = await fetch(
       'https://forkify-api.jonas.io/api/v2/recipes/664c8f193e7aa067e94e863d'
       // 'https://forkify-api.jonas.io/api/v2/recipes/5ed6604591c37cdc054bc886'

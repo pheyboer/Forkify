@@ -9,7 +9,9 @@
   "author": "Peter Heyboer",
   "license": "ISC",
   "dependencies": {
+    "core-js": "^3.40.0",
     "parcel": "^2.13.3",
+    "regenerator-runtime": "^0.14.1",
     "sass": "^1.26.10"
   },
   "devDependencies": {
