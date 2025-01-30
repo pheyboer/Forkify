@@ -1,3 +1,6 @@
+import * as model from './model.js';
+import recipeView from './views/recipeView.js';
+
 import icons from 'url:../img/icons.svg'; // Parcel 2
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
@@ -36,34 +39,19 @@ const showRecipe = async function () {
     console.log(id);
 
     if (!id) return;
-
-    // 1) Loading recipe
     renderSpinner(recipeContainer);
 
-    const res = await fetch(
-      `https://forkify-api.jonas.io/api/v2/recipes/${id}`
-    );
-    const data = await res.json();
-
-    if (!res.ok) throw new Error(`${data.message} (${res.status})`);
-
-    let { recipe } = data.data;
-    recipe = {
-      id: recipe.id,
-      title: recipe.title,
-      publisher: recipe.publisher,
-      sourceUrl: recipe.source_url,
-      image: recipe.image_url,
-      servings: recipe.servings,
-      cookingTime: recipe.cooking_time,
-      ingredients: recipe.ingredients,
-    };
-    console.log(recipe);
+    // 1) Loading recipe function (async - returns promise - must await promise)
+    await model.loadRecipe(id);
+    const { recipe } = model.state;
 
     // 2) Rendering Recipe
+
+    recipeView.render(model.state.recipe);
+
     const markup = `
       <figure class="recipe__fig">
-        <img src="${recipe.image}" alt="Tomato" class="recipe__img" />
+        <img src="${recipe.image}" alt="${recipe.title}" class="recipe__img" />
         <h1 class="recipe__title">
           <span>${recipe.title}</span>
         </h1>
