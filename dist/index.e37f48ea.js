@@ -616,7 +616,7 @@ const controlRecipes = async function() {
         await _modelJs.loadRecipe(id);
         // 2) Rendering Recipe
         (0, _recipeViewJsDefault.default).render(_modelJs.state.recipe);
-    } catch (err1) {
+    } catch (err) {
         (0, _recipeViewJsDefault.default).renderError();
     }
 };
@@ -629,7 +629,7 @@ const controlSearchResults = async function() {
         await _modelJs.loadSearchResults(query);
         //render results
         console.log(_modelJs.state.search.results);
-    } catch  {
+    } catch (err) {
         console.log(err);
     }
 };
@@ -1947,15 +1947,7 @@ const loadSearchResults = async function(query) {
     }
 };
 
-},{"./config.js":"k5Hzs","./helpers.js":"hGI1E","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"k5Hzs":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "API_URL", ()=>API_URL);
-parcelHelpers.export(exports, "TIMEOUT_SEC", ()=>TIMEOUT_SEC);
-const API_URL = 'https://forkify-api.jonas.io/api/v2/recipes/';
-const TIMEOUT_SEC = 10;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports,__globalThis) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./config.js":"k5Hzs","./helpers.js":"hGI1E"}],"gkKU3":[function(require,module,exports,__globalThis) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -1985,7 +1977,15 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}],"hGI1E":[function(require,module,exports,__globalThis) {
+},{}],"k5Hzs":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "API_URL", ()=>API_URL);
+parcelHelpers.export(exports, "TIMEOUT_SEC", ()=>TIMEOUT_SEC);
+const API_URL = 'https://forkify-api.jonas.io/api/v2/recipes/';
+const TIMEOUT_SEC = 10;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hGI1E":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getJSON", ()=>getJSON);
@@ -3052,7 +3052,7 @@ parcelHelpers.defineInteropFlag(exports);
 class SearchView {
     #parentEl = document.querySelector('.search');
     getQuery() {
-        const query = this.#parentEl.querySelector('.search_field').value;
+        const query = this.#parentEl.querySelector('.search__field').value;
         this.#clearInput();
         return query;
     }
