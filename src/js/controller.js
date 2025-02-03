@@ -6,6 +6,10 @@ import resultsView from './views/resultsView.js';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
+if (module.hot) {
+  module.hot.accept();
+}
+
 // new api url
 // https://forkify-api.jonas.io
 
@@ -39,7 +43,7 @@ const controlSearchResults = async function () {
 
     //render results
 
-    console.log(model.state.search.results);
+    resultsView.render(model.state.search.results);
   } catch (err) {
     console.log(err);
   }
