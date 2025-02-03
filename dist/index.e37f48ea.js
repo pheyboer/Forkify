@@ -635,7 +635,7 @@ const controlSearchResults = async function() {
         await _modelJs.loadSearchResults(query);
         //render results
         // resultsView.render(model.state.search.results);
-        (0, _resultsViewJsDefault.default).render(_modelJs.getSearchResultsPage(3));
+        (0, _resultsViewJsDefault.default).render(_modelJs.getSearchResultsPage());
         // render inital paginatoin
         (0, _paginationViewJsDefault.default).render(_modelJs.state.search);
     } catch (err) {
