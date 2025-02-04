@@ -23,7 +23,7 @@ const controlRecipes = async function () {
     recipeView.renderSpinner();
 
     // update results view to mark selected search result
-    resultsView.update(model.getSearchResultsPage())
+    resultsView.update(model.getSearchResultsPage());
 
     // 1) Loading recipe function (async - returns promise - must await promise)
     await model.loadRecipe(id);
@@ -73,10 +73,22 @@ const controlServings = function (newServings) {
   recipeView.update(model.state.recipe);
 };
 
+//controller for adding new bookmark
+const controlAddBookmark = function () {
+  if (!model.state.recipe.bookmarked) model.addBookMark(model.state.recipe);
+  else model.deleteBookmark(model.state.recipe.id);
+  model.addBookMark(model.state.recipe);
+
+  console.log(model.state.recipe);
+
+  recipeView.update(model.state.recipe);
+};
+
 //implement publisher subscriber pattern
 const init = function () {
   recipeView.addHandlerRender(controlRecipes);
   recipeView.addHandlerUpdateServings(controlServings);
+  recipeView.addHandlerAddBookmark(controlAddBookmark);
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
 };
