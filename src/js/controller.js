@@ -6,6 +6,7 @@ import resultsView from './views/resultsView.js';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 import paginationView from './views/paginationView.js';
+import bookmarksView from './views/bookmarksView.js';
 
 if (module.hot) {
   module.hot.accept();
@@ -24,6 +25,7 @@ const controlRecipes = async function () {
 
     // update results view to mark selected search result
     resultsView.update(model.getSearchResultsPage());
+    bookmarksView.update(model.state.bookmarks);
 
     // 1) Loading recipe function (async - returns promise - must await promise)
     await model.loadRecipe(id);
@@ -75,13 +77,16 @@ const controlServings = function (newServings) {
 
 //controller for adding new bookmark
 const controlAddBookmark = function () {
+  //add or remove bookmark
   if (!model.state.recipe.bookmarked) model.addBookMark(model.state.recipe);
   else model.deleteBookmark(model.state.recipe.id);
   model.addBookMark(model.state.recipe);
 
-  console.log(model.state.recipe);
-
+  //update recipe view
   recipeView.update(model.state.recipe);
+
+  //render bookmarks
+  bookmarksView.render(model.state.bookmarks);
 };
 
 //implement publisher subscriber pattern

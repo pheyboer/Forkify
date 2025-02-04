@@ -1,0 +1,9 @@
+# Ignore Parcel cache
+.parcel-cache/
+
+# Ignore node modules
+node_modules/
+
+# Ignore environment files
+.env
+.DS_Store
