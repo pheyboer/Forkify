@@ -617,6 +617,8 @@ const controlRecipes = async function() {
         console.log(id);
         if (!id) return;
         (0, _recipeViewJsDefault.default).renderSpinner();
+        // update results view to mark selected search result
+        (0, _resultsViewJsDefault.default).update(_modelJs.getSearchResultsPage());
         // 1) Loading recipe function (async - returns promise - must await promise)
         await _modelJs.loadRecipe(id);
         // 2) Rendering Recipe
@@ -2773,7 +2775,6 @@ class View {
         this._parentElement.insertAdjacentHTML('afterbegin', markup);
     }
     update(data) {
-        if (!data || Array.isArray(data) && data.length === 0) return this.renderError();
         this._data = data;
         const newMarkup = this._generateMarkup();
         //virtual dom
@@ -2782,8 +2783,11 @@ class View {
         const curElements = Array.from(this._parentElement.querySelectorAll('*'));
         newElements.forEach((newEl, i)=>{
             const curEl = curElements[i];
-            console.log(curEl, newEl.isEqualNode(curEl));
+            // console.log(curEl, newEl.isEqualNode(curEl));
+            //updates changed text
             if (!newEl.isEqualNode(curEl) && newEl.firstChild?.nodeValue.trim() !== '') curEl.textContent = newEl.textContent;
+            // updates changed attributes
+            if (!newEl.isEqualNode(curEl)) Array.from(newEl.attributes).forEach((attr)=>curEl.setAttribute(attr.name, attr.value));
         });
     }
     _clear() {
@@ -3158,16 +3162,17 @@ class ResultsView extends (0, _viewJsDefault.default) {
     _generateMarkup() {
         return this._data.map(this._generateMarkupPreview).join('');
     }
-    _generateMarkupPreview(results) {
+    _generateMarkupPreview(result) {
+        const id = window.location.hash.slice(1);
         return `
       <li class="preview">
-        <a class="preview__link" href="#${results.id}">
+        <a class="preview__link ${result.id === id ? `preview__link--active` : ''}" href="#${result.id}">
           <figure class="preview__fig">
-            <img src="${results.image}" alt="${results.title}" />
+            <img src="${result.image}" alt="${result.title}" />
           </figure>
           <div class="preview__data">
-            <h4 class="preview__title">${results.title}</h4>
-            <p class="preview__publisher">${results.publisher}</p>
+            <h4 class="preview__title">${result.title}</h4>
+            <p class="preview__publisher">${result.publisher}</p>
         </a>
       </li>
     `;
