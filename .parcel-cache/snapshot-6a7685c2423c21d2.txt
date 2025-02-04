@@ -10,7 +10,7 @@
 72C:\Coding Projects\Forkify\node_modules\core-js\internals\global-this.js133807533363154796 0
 82C:\Coding Projects\Forkify\node_modules\@babel\helper-validator-identifier\LICENSE133806819528318122 0
 71C:\Coding Projects\Forkify\node_modules\caniuse-lite\data\regions\AX.js133806819536188144 0
-31C:\Coding Projects\Forkify\dist133831019991509650 1
+31C:\Coding Projects\Forkify\dist133831028966296537 1
 72C:\Coding Projects\Forkify\node_modules\cosmiconfig\dist\readFile.js.map133806819532478147 0
 69C:\Coding Projects\Forkify\node_modules\regenerator-runtime\README.md133806819529988144 0
 57C:\Coding Projects\Forkify\node_modules\dotenv-expand\lib133806819532388152 1
@@ -194,7 +194,7 @@
 65C:\Coding Projects\Forkify\node_modules\@parcel\transformer-babel133806819536738130 1
 76C:\Coding Projects\Forkify\node_modules\core-js\stable\array\virtual\keys.js133807533367224768 0
 79C:\Coding Projects\Forkify\node_modules\core-js\actual\string\virtual\substr.js133807533373164780 0
-47C:\Coding Projects\Forkify\src\js\views\View.js133830869776283376 0
+47C:\Coding Projects\Forkify\src\js\views\View.js133831028966076501 0
 70C:\Coding Projects\Forkify\node_modules\core-js\es\symbol\match-all.js133807533367894898 0
 52C:\Coding Projects\Forkify\src\sass\_components.scss133736942274160314 0
 87C:\Coding Projects\Forkify\node_modules\@parcel\watcher\src\shared\BruteForceBackend.cc133806819530988118 0
@@ -262,7 +262,7 @@
 109C:\Coding Projects\Forkify\node_modules\posthtml\node_modules\entities\lib\generated\decode-data-xml.d.ts.map133806819537548137 0
 88C:\Coding Projects\Forkify\node_modules\@swc\helpers\src\_ts_add_disposable_resource.mjs133806819545098119 0
 59C:\Coding Projects\Forkify\node_modules\has-flag\index.d.ts133806819527848125 0
-47C:\Coding Projects\Forkify\src\js\controller.js133831014794258526 0
+47C:\Coding Projects\Forkify\src\js\controller.js133831025798463771 0
 75C:\Coding Projects\Forkify\node_modules\core-js\internals\set-difference.js133807533371674852 0
 65C:\Coding Projects\Forkify\node_modules\ordered-binary\index.d.ts133806819528978130 0
 89C:\Coding Projects\Forkify\node_modules\core-js\actual\object\get-own-property-symbols.js133807533362724794 0
@@ -314,7 +314,7 @@
 66C:\Coding Projects\Forkify\node_modules\core-js\es\regexp\split.js133807533372714779 0
 79C:\Coding Projects\Forkify\node_modules\core-js\modules\esnext.iterator.take.js133807533358994785 0
 53C:\Coding Projects\Forkify\node_modules\@parcel\graph133806819536428150 1
-53C:\Coding Projects\Forkify\src\js\views\recipeView.js133831020808965898 0
+53C:\Coding Projects\Forkify\src\js\views\recipeView.js133831024019172583 0
 58C:\Coding Projects\Forkify\node_modules\@lezer\common\dist133806819532378146 1
 69C:\Coding Projects\Forkify\node_modules\lmdb\dependencies\lz4\lib\dll133806819539508121 1
 71C:\Coding Projects\Forkify\node_modules\core-js\stable\date\set-year.js133807533371984785 0
@@ -3910,7 +3910,7 @@
 77C:\Coding Projects\Forkify\node_modules\core-js\proposals\keys-composition.js133807533367114813 0
 81C:\Coding Projects\Forkify\node_modules\core-js\proposals\map-update-or-insert.js133807533367624774 0
 79C:\Coding Projects\Forkify\node_modules\core-js\modules\es.array.copy-within.js133807533354774920 0
-42C:\Coding Projects\Forkify\dist\index.html133831018281333425 0
+42C:\Coding Projects\Forkify\dist\index.html133831027726709037 0
 71C:\Coding Projects\Forkify\node_modules\core-js\proposals\map-upsert.js133807533367654888 0
 76C:\Coding Projects\Forkify\node_modules\core-js\modules\es.promise.reject.js133807533356344894 0
 76C:\Coding Projects\Forkify\node_modules\core-js\proposals\math-extensions.js133807533368734879 0
@@ -6246,7 +6246,7 @@
 61C:\Coding Projects\Forkify\node_modules\core-js\actual\number133807533374144774 1
 69C:\Coding Projects\Forkify\node_modules\core-js\actual\parse-float.js133807533370134880 0
 67C:\Coding Projects\Forkify\node_modules\core-js\actual\parse-int.js133807533370184851 0
-49C:\Coding Projects\Forkify\dist\logo.726d37a8.png133831018281363441 0
+49C:\Coding Projects\Forkify\dist\logo.726d37a8.png133831027726739031 0
 82C:\Coding Projects\Forkify\node_modules\@swc\helpers\esm\_await_async_generator.js133806819539508121 0
 62C:\Coding Projects\Forkify\node_modules\core-js\actual\promise133807533376604780 1
 70C:\Coding Projects\Forkify\node_modules\@parcel\profiler\lib\Tracer.js133806819533148122 0
@@ -7028,7 +7028,7 @@
 84C:\Coding Projects\Forkify\node_modules\caniuse-lite\data\features\form-attribute.js133806819543948117 0
 83C:\Coding Projects\Forkify\node_modules\@swc\helpers\_\_async_iterator\package.json133806819541808124 0
 85C:\Coding Projects\Forkify\node_modules\caniuse-lite\data\features\form-validation.js133806819543978130 0
-49C:\Coding Projects\Forkify\dist\index.e37f48ea.js133831019991499650 0
+49C:\Coding Projects\Forkify\dist\index.e37f48ea.js133831028966276529 0
 65C:\Coding Projects\Forkify\node_modules\@swc\helpers\_\_using_ctx133806819543948117 1
 77C:\Coding Projects\Forkify\node_modules\caniuse-lite\data\features\gamepad.js133806819544028124 0
 81C:\Coding Projects\Forkify\node_modules\caniuse-lite\data\features\geolocation.js133806819544078130 0
@@ -8141,9 +8141,9 @@
 49C:\Coding Projects\Forkify\node_modules\.bin\sass133806820741202667 0
 51C:\Coding Projects\Forkify\node_modules\.bin\semver133806819555008114 0
 71C:\Coding Projects\Forkify\node_modules\.bin\update-browserslist-db.cmd133806819555008114 0
-52C:\Coding Projects\Forkify\dist\favicon.8b2f57bf.png133831018281540138 0
-50C:\Coding Projects\Forkify\dist\icons.21bad73c.svg133831018281333425 0
-50C:\Coding Projects\Forkify\dist\icons.dfd7a6db.svg133831018281343424 0
-53C:\Coding Projects\Forkify\dist\index.e37f48ea.js.map133831019991509650 0
-50C:\Coding Projects\Forkify\dist\index.f7626f62.css133831018281363441 0
-54C:\Coding Projects\Forkify\dist\index.f7626f62.css.map133831018281540138 0
+52C:\Coding Projects\Forkify\dist\favicon.8b2f57bf.png133831027726779049 0
+50C:\Coding Projects\Forkify\dist\icons.21bad73c.svg133831027726699069 0
+50C:\Coding Projects\Forkify\dist\icons.dfd7a6db.svg133831027726719024 0
+53C:\Coding Projects\Forkify\dist\index.e37f48ea.js.map133831028966296537 0
+50C:\Coding Projects\Forkify\dist\index.f7626f62.css133831027726739031 0
+54C:\Coding Projects\Forkify\dist\index.f7626f62.css.map133831027726749045 0

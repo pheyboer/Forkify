@@ -605,9 +605,9 @@ var _searchViewJs = require("./views/searchView.js");
 var _searchViewJsDefault = parcelHelpers.interopDefault(_searchViewJs);
 var _resultsViewJs = require("./views/resultsView.js");
 var _resultsViewJsDefault = parcelHelpers.interopDefault(_resultsViewJs);
+var _runtime = require("regenerator-runtime/runtime");
 var _paginationViewJs = require("./views/paginationView.js");
 var _paginationViewJsDefault = parcelHelpers.interopDefault(_paginationViewJs);
-var _runtime = require("regenerator-runtime/runtime");
 if (module.hot) module.hot.accept();
 // new api url
 // https://forkify-api.jonas.io
@@ -652,7 +652,8 @@ const controlServings = function(newServings) {
     // update the recipe servings(in state)
     _modelJs.updateServings(newServings);
     // update the view as well
-    (0, _recipeViewJsDefault.default).render(_modelJs.state.recipe);
+    // recipeView.render(model.state.recipe);
+    (0, _recipeViewJsDefault.default).update(_modelJs.state.recipe);
 };
 //implement publisher subscriber pattern
 const init = function() {
@@ -2661,7 +2662,7 @@ class RecipeView extends (0, _viewJsDefault.default) {
         this._parentElement.addEventListener('click', function(e) {
             const btn = e.target.closest('.btn--update-servings');
             if (!btn) return;
-            const { updateTo } = +btn.dataset;
+            const updateTo = +btn.dataset.updateTo;
             if (+updateTo > 0) handler(+updateTo);
         });
     }
@@ -2708,7 +2709,7 @@ class RecipeView extends (0, _viewJsDefault.default) {
         </div>
         <button class="btn--round">
           <svg class="">
-            <use href="${0, _iconsSvgDefault.default}.svg#icon-bookmark-fill"></use>
+            <use href="${0, _iconsSvgDefault.default}#icon-bookmark-fill"></use>
           </svg>
         </button>
       </div>
@@ -2717,6 +2718,7 @@ class RecipeView extends (0, _viewJsDefault.default) {
         <h2 class="heading--2">Recipe ingredients</h2>
         <ul class="recipe__ingredient-list">
           ${this._data.ingredients.map(this._generateMarkupIngredient).join('')}
+        </ul>
       </div>
 
       <div class="recipe__directions">
@@ -2733,7 +2735,7 @@ class RecipeView extends (0, _viewJsDefault.default) {
         >
           <span>Directions</span>
           <svg class="search__icon">
-            <use href="${0, _iconsSvgDefault.default}.svg#icon-arrow-right"></use>
+            <use href="${0, _iconsSvgDefault.default}#icon-arrow-right"></use>
           </svg>
         </a>
       </div>
@@ -2743,7 +2745,7 @@ class RecipeView extends (0, _viewJsDefault.default) {
         return `
     <li class="recipe__ingredient">
       <svg class="recipe__icon">
-        <use href="${0, _iconsSvgDefault.default}.svg#icon-check"></use>
+        <use href="${0, _iconsSvgDefault.default}#icon-check"></use>
       </svg>
       <div class="recipe__quantity">${ing.quantity ? new (0, _fractional.Fraction)(ing.quantity).toString() : ''}</div>
       <div class="recipe__description">
@@ -2769,6 +2771,20 @@ class View {
         const markup = this._generateMarkup();
         this._clear();
         this._parentElement.insertAdjacentHTML('afterbegin', markup);
+    }
+    update(data) {
+        if (!data || Array.isArray(data) && data.length === 0) return this.renderError();
+        this._data = data;
+        const newMarkup = this._generateMarkup();
+        //virtual dom
+        const newDOM = document.createRange().createContextualFragment(newMarkup);
+        const newElements = Array.from(newDOM.querySelectorAll('*'));
+        const curElements = Array.from(this._parentElement.querySelectorAll('*'));
+        newElements.forEach((newEl, i)=>{
+            const curEl = curElements[i];
+            console.log(curEl, newEl.isEqualNode(curEl));
+            if (!newEl.isEqualNode(curEl) && newEl.firstChild?.nodeValue.trim() !== '') curEl.textContent = newEl.textContent;
+        });
     }
     _clear() {
         this._parentElement.innerHTML = '';
