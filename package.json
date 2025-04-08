@@ -10,13 +10,14 @@
   "author": "Peter Heyboer",
   "license": "ISC",
   "dependencies": {
-    "core-js": "^3.40.0",
+    "core-js": "^3.41.0",
     "fractional": "^1.0.0",
     "regenerator-runtime": "^0.14.1",
     "sass": "^1.26.10"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.13.3",
+    "eslint": "^9.24.0",
     "parcel": "^2.14.4",
     "svgo": "^3.3.2"
   }

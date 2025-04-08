@@ -18,7 +18,7 @@ if (module.hot) {
 const controlRecipes = async function () {
   try {
     const id = window.location.hash.slice(1);
-    console.log(id);
+    //     console.log(id);
 
     if (!id) return;
     recipeView.renderSpinner();
@@ -27,12 +27,14 @@ const controlRecipes = async function () {
     resultsView.update(model.getSearchResultsPage());
     bookmarksView.update(model.state.bookmarks);
 
-    // 1) Loading recipe function (async - returns promise - must await promise)
+    // 1) Loading recipe
     await model.loadRecipe(id);
+    // console.log('Recipe loaded:', model.state.recipe);
 
     // 2) Rendering Recipe
     recipeView.render(model.state.recipe);
   } catch (err) {
+    // console.error('Error loading recipe:', err);
     recipeView.renderError();
   }
 };
@@ -80,7 +82,6 @@ const controlAddBookmark = function () {
   //add or remove bookmark
   if (!model.state.recipe.bookmarked) model.addBookMark(model.state.recipe);
   else model.deleteBookmark(model.state.recipe.id);
-  model.addBookMark(model.state.recipe);
 
   //update recipe view
   recipeView.update(model.state.recipe);
@@ -97,4 +98,5 @@ const init = function () {
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
 };
+
 init();

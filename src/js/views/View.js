@@ -10,7 +10,7 @@ export default class View {
     this._data = data;
     const markup = this._generateMarkup();
 
-    if(!render) return markup;
+    if (!render) return markup;
 
     this._clear();
     this._parentElement.insertAdjacentHTML('afterbegin', markup);
@@ -32,7 +32,8 @@ export default class View {
       //updates changed text
       if (
         !newEl.isEqualNode(curEl) &&
-        newEl.firstChild?.nodeValue.trim() !== ''
+        newEl.firstChild?.nodeValue &&
+        newEl.firstChild.nodeValue.trim() !== ''
       ) {
         curEl.textContent = newEl.textContent;
       }
