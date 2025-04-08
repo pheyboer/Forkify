@@ -143,6 +143,18 @@ export const uploadRecipe = async function (newRecipe) {
 
         return { quantity: quantity ? +quantity : null, unit, description };
       });
+
+    const recipe = {
+      title: newRecipe.title,
+      source_url: newRecipe.source_url,
+      image_url: newRecipe.image,
+      publisher: newRecipe.publisher,
+      cooking_time: +newRecipe.cookingTime,
+      servings: +newRecipe.servings,
+      ingredients,
+    };
+
+    console.log(recipe);
   } catch (err) {
     throw err;
   }
