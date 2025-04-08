@@ -9,7 +9,6 @@
 use parcel v2
 
 Dependencies: parcel v2
-- testing move to wsl
 
 # Forkify Recipe App - WIP
 
@@ -41,7 +40,9 @@ The app utilizes modern JavaScript features like asynchronous programming (via t
 
 ### Installation
 - Clone the repository: ```git clone git@github.com:pheyboer/Forkify.git```
-- Open ```index.html``` in your browser to run the application.
+- ```npm install``` to install dependencies
+- ```npm start``` to run application
+
 
 ### Usage
 - Search for Recipes: Enter ingredients or keywords into the search bar to find recipes.

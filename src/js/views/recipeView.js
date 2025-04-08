@@ -1,6 +1,26 @@
 import View from './View.js';
 import icons from 'url:../../img/icons.svg'; // Parcel 2
-import { Fraction } from 'fractional';
+
+// Replacing Fractional with different implementation due to errors
+function formatFraction(num) {
+  if (!num) return '';
+
+  // Handle whole numbers
+  if (num % 1 === 0) return num;
+
+  // Handle simple fractions
+  const [int, dec] = num.toString().split('.');
+
+  // Convert decimal to fraction string
+  if (dec === '25') return int !== '0' ? `${int} 1/4` : '1/4';
+  if (dec === '5' || dec === '50') return int !== '0' ? `${int} 1/2` : '1/2';
+  if (dec === '75') return int !== '0' ? `${int} 3/4` : '3/4';
+  if (dec === '33') return int !== '0' ? `${int} 1/3` : '1/3';
+  if (dec === '67') return int !== '0' ? `${int} 2/3` : '2/3';
+
+  // Return original number if no match
+  return num;
+}
 
 class RecipeView extends View {
   _parentElement = document.querySelector('.recipe');
@@ -126,7 +146,7 @@ class RecipeView extends View {
         <use href="${icons}#icon-check"></use>
       </svg>
       <div class="recipe__quantity">${
-        ing.quantity ? new Fraction(ing.quantity).toString() : ''
+        ing.quantity ? formatFraction(ing.quantity) : ''
       }</div>
       <div class="recipe__description">
         <span class="recipe__unit">${ing.unit}</span>
