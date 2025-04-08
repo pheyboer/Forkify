@@ -2,11 +2,14 @@ import * as model from './model.js';
 import recipeView from './views/recipeView.js';
 import searchView from './views/searchView.js';
 import resultsView from './views/resultsView.js';
+import paginationView from './views/paginationView.js';
+import bookmarksView from './views/bookmarksView.js';
+import addRecipeView from './views/addRecipeView.js';
+
 
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
-import paginationView from './views/paginationView.js';
-import bookmarksView from './views/bookmarksView.js';
+import { async } from 'regenerator-runtime';
 
 if (module.hot) {
   module.hot.accept();
@@ -18,28 +21,34 @@ if (module.hot) {
 const controlRecipes = async function () {
   try {
     const id = window.location.hash.slice(1);
-    //     console.log(id);
+    // console.log('Loading recipe ID:', id);
 
     if (!id) return;
     recipeView.renderSpinner();
 
-    // update results view to mark selected search result
-    resultsView.update(model.getSearchResultsPage());
+    // update results view if there are actual results
+    if (
+      model.state.search &&
+      model.state.search.results &&
+      model.state.search.results.length > 0
+    ) {
+      resultsView.update(model.getSearchResultsPage());
+    }
 
-    // updating bookmarks view
-    bookmarksView.update(model.state.bookmarks);
+    // Only update bookmarks if they exist
+    if (model.state.bookmarks && model.state.bookmarks.length > 0) {
+      bookmarksView.update(model.state.bookmarks);
+    }
 
     // Loading recipe
     await model.loadRecipe(id);
     // console.log('Recipe loaded:', model.state.recipe);
 
-    // rendering Recipe
+    // Rendering Recipe
     recipeView.render(model.state.recipe);
-
   } catch (err) {
-    // console.error('Error loading recipe:', err);
+    console.error('Error loading recipe:', err);
     recipeView.renderError();
-    console.error(err);
   }
 };
 

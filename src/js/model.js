@@ -21,7 +21,7 @@ export const loadRecipe = async function (id) {
 
     try {
       const data = await getJSON(`${API_URL}${id}`);
-      console.log('API response:', data);
+      // console.log('API response:', data);
 
       if (!data || !data.data || !data.data.recipe) {
         throw new Error('Recipe data missing in API response');
