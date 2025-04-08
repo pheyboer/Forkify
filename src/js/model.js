@@ -14,26 +14,41 @@ export const state = {
 
 export const loadRecipe = async function (id) {
   try {
-    const data = await getJSON(`${API_URL}${id}`);
+    if (!id) {
+      console.error('Missing recipe ID');
+      throw new Error('Recipe ID is required');
+    }
 
-    const { recipe } = data.data;
-    state.recipe = {
-      id: recipe.id,
-      title: recipe.title,
-      publisher: recipe.publisher,
-      sourceUrl: recipe.source_url,
-      image: recipe.image_url,
-      servings: recipe.servings,
-      cookingTime: recipe.cooking_time,
-      ingredients: recipe.ingredients,
-    };
-    if (state.bookmarks.some(bookmark => bookmark.id === id))
-      state.recipe.bookmarked = true;
-    else state.recipe.bookmarked = false;
+    try {
+      const data = await getJSON(`${API_URL}${id}`);
+      console.log('API response:', data);
 
-    console.log(state.recipe);
+      if (!data || !data.data || !data.data.recipe) {
+        throw new Error('Recipe data missing in API response');
+      }
+
+      const { recipe } = data.data;
+      state.recipe = {
+        id: recipe.id,
+        title: recipe.title,
+        publisher: recipe.publisher,
+        sourceUrl: recipe.source_url,
+        image: recipe.image_url,
+        servings: recipe.servings,
+        cookingTime: recipe.cooking_time,
+        ingredients: recipe.ingredients,
+      };
+
+      if (state.bookmarks.some(bookmark => bookmark.id === id))
+        state.recipe.bookmarked = true;
+      else state.recipe.bookmarked = false;
+    } catch (err) {
+      // If original API fails, try the fallback sample data
+      console.error(`Error with original API: ${err.message}`);
+      throw err;
+    }
   } catch (err) {
-    console.error(`${err} ☠ ☠ ☠ ☠`);
+    console.error(`Error loading recipe: ${err.message}`);
     throw err;
   }
 };
@@ -109,4 +124,8 @@ const init = function () {
 };
 
 init();
-console.log(state.bookmarks);
+
+const clearBookmarks = function () {
+  localStorage.clear('bookmarks');
+};
+// clearBookmarks();
