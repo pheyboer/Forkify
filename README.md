@@ -9,6 +9,7 @@
 use parcel v2
 
 Dependencies: parcel v2
+- testing move to wsl
 
 # Forkify Recipe App - WIP
 
