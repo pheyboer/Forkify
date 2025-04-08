@@ -106,6 +106,16 @@ const controlBookmarks = function () {
   bookmarksView.render(model.state.bookmarks);
 };
 
+const controlAddRecipe = async function (newRecipe) {
+  try {
+    //upload new recipe data
+    await model.uploadRecipe(newRecipe);
+  } catch (err) {
+    console.error('💥', err);
+    addRecipeView.renderError(err.message);
+  }
+};
+
 //implement publisher subscriber pattern
 const init = function () {
   bookmarksView.addHandlerRender(controlBookmarks);
@@ -114,6 +124,7 @@ const init = function () {
   recipeView.addHandlerAddBookmark(controlAddBookmark);
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
+  addRecipeView.addHandlerUpload(controlAddRecipe);
 };
 
 init();
