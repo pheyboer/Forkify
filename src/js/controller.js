@@ -134,6 +134,10 @@ const controlAddRecipe = async function (newRecipe) {
   }
 };
 
+const newFeature = function () {
+  console.log('Welcome to the Live Application');
+};
+
 //implement publisher subscriber pattern
 const init = function () {
   bookmarksView.addHandlerRender(controlBookmarks);
