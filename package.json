@@ -5,8 +5,8 @@
   "browserslist": "last 2 versions, > 0.5% and ie >= 11",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html --dist-dir ./dist --no-optimize"
-    // "build": "parcel build index.html --dist-dir ./dist"
+    // "build": "parcel build index.html --dist-dir ./dist --no-optimize"
+    "build": "parcel build index.html --dist-dir ./dist"
   },
   "author": "Peter Heyboer",
   "license": "ISC",
