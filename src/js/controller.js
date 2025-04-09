@@ -138,6 +138,8 @@ const newFeature = function () {
   console.log('Welcome to the Live Application');
 };
 
+newFeature();
+
 //implement publisher subscriber pattern
 const init = function () {
   bookmarksView.addHandlerRender(controlBookmarks);
@@ -150,3 +152,5 @@ const init = function () {
 };
 
 init();
+
+
