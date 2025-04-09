@@ -6,6 +6,7 @@
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html --dist-dir ./dist --no-optimize"
+    // "build": "parcel build index.html --dist-dir ./dist"
   },
   "author": "Peter Heyboer",
   "license": "ISC",
